@@ -1,0 +1,67 @@
+{
+  "name": "parlamento-datas_sessoes",
+  "title": "Datas das sessões plenárias",
+  "homepage": "",
+  "version": "0.1.0",
+  "sources": [
+    {
+      "name": "Parlamento",
+      "web": "http://www.parlamento.pt"
+    }
+  ],
+  "license": "PDDL-1.0",
+  "resources": [
+    {
+      "name": "parlamento-datas_sessoes_plenarias",
+      "path": "data/parlamento-datas_sessoes_plenarias.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "bytes": 240435,
+      "schema": {
+        "fields": [
+          {
+            "name": "sess",
+            "type": "integer",
+            "description": ""
+          },
+          {
+            "name": "page_end",
+            "type": "integer",
+            "description": ""
+          },
+          {
+            "name": "leg",
+            "type": "integer",
+            "description": ""
+          },
+          {
+            "name": "number",
+            "type": "integer",
+            "description": ""
+          },
+          {
+            "name": "page_start",
+            "type": "integer",
+            "description": ""
+          },
+          {
+            "name": "session_date",
+            "type": "datetime",
+            "description": ""
+          },
+          {
+            "name": "pub_date",
+            "type": "datetime",
+            "description": ""
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "description": ""
+          }
+        ]
+      }
+    }
+  ],
+  "description": "Datas e referências das sessões plenárias da Assembleia da República."
+}
