@@ -1,7 +1,8 @@
 {
-  "name": "parlamento-datas_sessoes",
-  "title": "Datas das sessões plenárias",
-  "homepage": "",
+  "name": "parlamento-datas",
+  "title": "Datas das sessões plenárias do Parlamento",
+  "homepage": "https://centraldedados.pt/parlamento-datas/",
+  "description": "Lista das datas de todas as sessões plenárias no Parlamento desde 1976",
   "version": "0.1.0",
   "sources": [
     {
@@ -9,59 +10,43 @@
       "web": "http://www.parlamento.pt"
     }
   ],
-  "license": "PDDL-1.0",
+  "license": "ODbL",
   "resources": [
     {
-      "name": "parlamento-datas_sessoes_plenarias",
-      "path": "data/parlamento-datas_sessoes_plenarias.csv",
+      "name": "parlamento-datas",
+      "path": "data/parlamento-datas.csv",
       "format": "csv",
       "mediatype": "text/csv",
-      "bytes": 240435,
+      "bytes": 115281,
       "schema": {
         "fields": [
           {
-            "name": "sess",
+            "name": "legislatura",
             "type": "integer",
-            "description": ""
+            "description": "Número da legislatura"
           },
           {
-            "name": "page_end",
+            "name": "sessao",
             "type": "integer",
-            "description": ""
+            "description": "Número da sessão legislativa"
           },
           {
-            "name": "leg",
+            "name": "numero",
             "type": "integer",
-            "description": ""
+            "description": "Número do Diário"
           },
           {
-            "name": "number",
-            "type": "integer",
-            "description": ""
+            "name": "data",
+            "type": "date",
+            "description": "Data da sessão"
           },
           {
-            "name": "page_start",
-            "type": "integer",
-            "description": ""
-          },
-          {
-            "name": "session_date",
-            "type": "datetime",
-            "description": ""
-          },
-          {
-            "name": "pub_date",
-            "type": "datetime",
-            "description": ""
-          },
-          {
-            "name": "id",
-            "type": "string",
-            "description": ""
+            "name": "data_pub",
+            "type": "date",
+            "description": "Data da publicação no Diário"
           }
         ]
       }
     }
-  ],
-  "description": "Datas e referências das sessões plenárias da Assembleia da República."
+  ]
 }
