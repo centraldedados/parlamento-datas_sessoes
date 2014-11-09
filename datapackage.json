@@ -13,8 +13,8 @@
   "license": "ODbL",
   "resources": [
     {
-      "name": "parlamento-datas",
-      "path": "data/parlamento-datas.csv",
+      "name": "Datas das sessões plenárias do Parlamento",
+      "path": "data/parlamento-datas_sessoes.csv",
       "format": "csv",
       "mediatype": "text/csv",
       "bytes": 115281,
