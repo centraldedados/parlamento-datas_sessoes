@@ -14,7 +14,7 @@
   "resources": [
     {
       "name": "Datas das sessões plenárias do Parlamento",
-      "path": "data/parlamento-datas_sessoes.csv",
+      "path": "data/parlamento-datas_sessoes_plenarias.csv",
       "format": "csv",
       "mediatype": "text/csv",
       "bytes": 115281,
