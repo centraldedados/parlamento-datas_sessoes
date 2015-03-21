@@ -1,5 +1,6 @@
 Nesta data package podem ser encontradas as datas de todas as sessões plenárias
-do Parlamento desde 1976 até 2014. 
+do Parlamento desde 1976 até ao presente. 
+
 
 Fontes
 ------
@@ -7,17 +8,6 @@ Fontes
 O dataset foi construído a partir da informação disponível no site do
 [Parlamento](http://parlamento.pt) e no
 [debates.parlamento.pt](http://debates.parlamento.pt).
-
-
-Limitações
-----------
-
-De momento, apenas temos disponíveis as datas das sessões até ao final da 3ª
-sessão legislativa da XII legislatura. As da 4ª sessão (a atual) ainda não estão
-incluídas.
-
-Estamos a tentar encontrar a melhor forma de automatizar a extração dessa
-informação no momento em que esta se torna disponível no site do Parlamento.
 
 
 Licença
