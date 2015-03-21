@@ -14,36 +14,46 @@
   "resources": [
     {
       "name": "Datas das sessões plenárias do Parlamento",
-      "path": "data/parlamento-datas_sessoes_plenarias.csv",
+      "path": "data/datas_sessoes_plenarias.csv",
       "format": "csv",
       "mediatype": "text/csv",
       "bytes": 115281,
       "schema": {
         "fields": [
           {
-            "name": "legislatura",
+            "name": "leg",
             "type": "integer",
             "description": "Número da legislatura"
           },
           {
-            "name": "sessao",
+            "name": "sess",
             "type": "integer",
             "description": "Número da sessão legislativa"
           },
           {
-            "name": "numero",
+            "name": "num",
             "type": "integer",
             "description": "Número do Diário"
           },
           {
-            "name": "data",
+            "name": "date",
             "type": "date",
             "description": "Data da sessão"
           },
           {
-            "name": "data_pub",
+            "name": "pub_date",
             "type": "date",
             "description": "Data da publicação no Diário"
+          },
+          {
+            "name": "page_start",
+            "type": "integer",
+            "description": "Página inicial do DAR"
+          },
+          {
+            "name": "page_end",
+            "type": "integer",
+            "description": "Página final do DAR"
           }
         ]
       }
