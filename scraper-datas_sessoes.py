@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 from collections import OrderedDict
 from zenlog import log
 
-OUTFILE = "datas_sessoes_plenarias.csv"
+OUTFILE = "datas-debates.csv"
 
 BASE_URL = "http://debates.parlamento.pt/index.aspx?cid=r3.dar"
 LAST_LEG = 12
