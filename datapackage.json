@@ -13,8 +13,8 @@
   "license": "ODbL",
   "resources": [
     {
-      "name": "Datas das sessões plenárias do Parlamento",
-      "path": "data/datas_sessoes_plenarias.csv",
+      "name": "Datas das sessões plenárias (debates.parlamento.pt)",
+      "path": "data/datas-debates.csv",
       "format": "csv",
       "mediatype": "text/csv",
       "bytes": 115281,
@@ -54,6 +54,52 @@
             "name": "page_end",
             "type": "integer",
             "description": "Página final do DAR"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Datas das sessões plenárias (Parlamento.pt)",
+      "path": "data/datas-parlamento.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "bytes": 115281,
+      "schema": {
+        "fields": [
+          {
+            "name": "leg",
+            "type": "integer",
+            "description": "Número da legislatura"
+          },
+          {
+            "name": "sess",
+            "type": "integer",
+            "description": "Número da sessão legislativa"
+          },
+          {
+            "name": "num",
+            "type": "integer",
+            "description": "Número do Diário"
+          },
+          {
+            "name": "date",
+            "type": "date",
+            "description": "Data da sessão"
+          },
+          {
+            "name": "pub_date",
+            "type": "date",
+            "description": "Data da publicação no Diário"
+          },
+          {
+            "name": "published_date",
+            "type": "date",
+            "description": "Data da publicação online"
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "description": "Notas"
           }
         ]
       }
