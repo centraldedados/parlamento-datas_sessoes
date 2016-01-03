@@ -31,17 +31,21 @@ def get_dates(leg, sess):
         return entries
 
     soup = BeautifulSoup(browser.html)
-    date_table_body = soup.find_all('table', attrs={"class": "tabelasExpandidas"})[0].find("tbody")
-    rows = date_table_body.find_all('tr')
+    rows = soup.find('div', id="painelNumeros").find_all('tr')
     for row in rows:
         cols = row.find_all('td')
+        if not cols:
+            continue
         entry = OrderedDict()
         entry['leg'] = leg
         entry['sess'] = sess
-        num = entry['num'] = int(cols[0].text.strip().split(" ")[-1])
+        try:
+            num = entry['num'] = int(cols[0].text.strip().split(" ")[-1])
+        except ValueError:
+            num = entry['num'] = cols[0].text.strip().split(" ")[-1]
         entry['date'] = cols[1].text.strip()
         entry['pages'] = int(cols[2].text.strip())
-        entry['democratica_url'] = "http://demo.cratica.org/sessoes/%d/%d/%d/" % (leg, sess, num)
+        entry['democratica_url'] = "http://demo.cratica.org/sessoes/%d/%d/%s/" % (leg, sess, str(num))
         entry['debates_url'] = "http://debates.parlamento.pt" + cols[0].find("a")['href']
         entries.append(entry)
     log.info("Parsed %d entries!" % len(entries))
