@@ -3,51 +3,46 @@
 import os
 import click
 import csv
-from splinter import Browser
+import splinter
 from bs4 import BeautifulSoup
 from collections import OrderedDict
 from zenlog import log
 
 OUTFILE = "datas-debates.csv"
 
-BASE_URL = "http://debates.parlamento.pt/index.aspx?cid=r3.dar"
-LAST_LEG = 12
-LAST_SESS = 4
+URL_FORMATTER = "http://debates.parlamento.pt/catalogo/r3/dar/01/%02d/%02d"
+LAST_LEG = 13
+LAST_SESS = 1
 WEBDRIVER = "phantomjs"
 
 # URL para uma página:
 # http://debates.parlamento.pt/page.aspx?cid=r3.dar&diary=s1l10sl2n56-0010&type=texto
 
-FIELDNAMES = ['leg', 'sess', 'num', 'date', 'pub_date', 'page_start', 'page_end']
+FIELDNAMES = ['leg', 'sess', 'num', 'date', 'pages', 'democratica_url', 'debates_url']
 
-browser = Browser(WEBDRIVER)
+browser = splinter.Browser(WEBDRIVER, user_agent="Mozilla/5.0 ;Windows NT 6.1; WOW64; Trident/7.0; rv:11.0; like Gecko")
 
 
 def get_dates(leg, sess):
-    browser.visit(BASE_URL)
-    browser.select('ctl00$ContentPlaceHolder1$IndexDiaries1$rpSearch$ctl00$ddlLegislature', 'l%02d' % leg)
-    browser.select('ctl00$ContentPlaceHolder1$IndexDiaries1$rpSearch$ctl00$ddlSession', 'sl%d' % sess)
-    browser.find_by_name("ctl00$ContentPlaceHolder1$IndexDiaries1$bttSearch").first.click()
     entries = []
-    if browser.is_text_present(u"Não foram encontrados diários", wait_time=7):
-        # esta combinação legislatura/sessão não existe
+    try:
+        browser.visit(URL_FORMATTER % (leg, sess))
+    except splinter.request_handler.status_code.HttpResponseError:
         return entries
 
     soup = BeautifulSoup(browser.html)
-    rows = soup.find_all('tr', attrs={"class": ["resultseven", "resultsodd"]})
+    date_table_body = soup.find_all('table', attrs={"class": "tabelasExpandidas"})[0].find("tbody")
+    rows = date_table_body.find_all('tr')
     for row in rows:
         cols = row.find_all('td')
         entry = OrderedDict()
         entry['leg'] = leg
         entry['sess'] = sess
-        try:
-            entry['num'] = int(cols[0].find("a").text)
-        except ValueError:
-            entry['num'] = cols[0].find("a").text
-        entry['date'] = cols[2].text
-        entry['pub_date'] = cols[1].text
-        entry['page_start'] = int(cols[3].text.split('-')[0])
-        entry['page_end'] = int(cols[3].text.split('-')[1])
+        num = entry['num'] = int(cols[0].text.strip().split(" ")[-1])
+        entry['date'] = cols[1].text.strip()
+        entry['pages'] = int(cols[2].text.strip())
+        entry['democratica_url'] = "http://demo.cratica.org/sessoes/%d/%d/%d/" % (leg, sess, num)
+        entry['debates_url'] = "http://debates.parlamento.pt" + cols[0].find("a")['href']
         entries.append(entry)
     log.info("Parsed %d entries!" % len(entries))
     return entries
