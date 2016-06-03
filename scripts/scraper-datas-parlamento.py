@@ -11,8 +11,8 @@ from zenlog import log
 OUTFILE = "datas-parlamento.csv"
 
 BASE_URL = "http://www.parlamento.pt/DAR/Paginas/DAR1Serie.aspx"
-LAST_LEG = 12
-LAST_SESS = 4
+LAST_LEG = 13
+LAST_SESS = 1
 WEBDRIVER = "phantomjs"
 
 # URL para uma página:
