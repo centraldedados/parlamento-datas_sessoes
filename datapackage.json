@@ -1,7 +1,7 @@
 {
   "name": "parlamento-datas_sessoes",
   "title": "Datas das sessões plenárias do Parlamento",
-  "homepage": "https://centraldedados.pt/parlamento-datas_sessoes/",
+  "homepage": "https://github.com/centraldedados/parlamento-datas_sessoes/",
   "description": "Lista das datas de todas as sessões plenárias no Parlamento desde 1976",
   "version": "0.1.0",
   "sources": [
