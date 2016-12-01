@@ -1,5 +1,5 @@
 scrape:
-	python scraper-datas-debates.py -e ../data/datas-debates-novo.csv
+	. `pwd`/.env/bin/activate; python scraper-datas-debates.py -e ../data/datas-debates-novo.csv
 
 install:
 	virtualenv .env --no-site-packages --distribute --prompt=\(scraper\)

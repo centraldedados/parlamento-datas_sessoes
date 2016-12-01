@@ -12,7 +12,7 @@ OUTFILE = "datas-debates.csv"
 
 URL_FORMATTER = "http://debates.parlamento.pt/catalogo/r3/dar/01/%02d/%02d"
 LAST_LEG = 13
-LAST_SESS = 1
+LAST_SESS = 2
 WEBDRIVER = "phantomjs"
 
 # URL para uma página:
