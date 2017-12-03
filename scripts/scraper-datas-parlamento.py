@@ -6,6 +6,7 @@ import unicodecsv as csv
 import splinter
 from bs4 import BeautifulSoup
 from collections import OrderedDict
+from time import sleep
 from zenlog import log
 
 OUTFILE = "datas-parlamento.csv"
@@ -30,9 +31,10 @@ def get_dates(leg, sess):
     options = leg_box.find_by_tag('option')
     idx = LAST_LEG - leg
     browser.select("ctl00$ctl43$g_322eea22_ecb3_49d3_aa7c_3a66576bec2e$ctl00$ddlLegislatura", options[idx].value)
-    print "selected"
+    print("selected")
+    sleep(2)
     if browser.is_text_not_present("A carregar", wait_time=10):
-        print "Loaded!"
+        print("Loaded!")
         pass
     else:
         assert False
@@ -41,9 +43,10 @@ def get_dates(leg, sess):
     options = sess_box.find_by_tag('option')
     idx = len(options) - sess
     browser.select('ctl00$ctl43$g_322eea22_ecb3_49d3_aa7c_3a66576bec2e$ctl00$ddlSessaoLegislativa', options[idx].value)
-    print "selected"
+    print("selected")
+    sleep(2)
     if browser.is_text_not_present("A carregar", wait_time=10):
-        print "Loaded!"
+        print("Loaded!")
         pass
     else:
         assert False
@@ -53,7 +56,7 @@ def get_dates(leg, sess):
         # esta combinação legislatura/sessão não existe
         return entries
 
-    soup = BeautifulSoup(browser.html)
+    soup = BeautifulSoup(browser.html, 'html.parser')
     rows = soup.find_all('tr', attrs={"class": ["ARTabResultadosLinhaImpar", "ARTabResultadosLinhaPar"]})
     rows.reverse()
     for row in rows:
@@ -85,7 +88,7 @@ def scrape(scrape_all, extend_file):
     if scrape_all:
         for leg in range(12, LAST_LEG + 1):
             for sess in range(1, 5):
-                print leg, sess
+                print(leg, sess)
                 entries.extend(get_dates(leg, sess))
     else:
         entries.extend(get_dates(LAST_LEG, LAST_SESS))
