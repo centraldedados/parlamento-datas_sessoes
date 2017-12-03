@@ -12,7 +12,7 @@ OUTFILE = "datas-debates.csv"
 
 URL_FORMATTER = "http://debates.parlamento.pt/catalogo/r3/dar/01/%02d/%02d"
 LAST_LEG = 13
-LAST_SESS = 2
+LAST_SESS = 3
 WEBDRIVER = "phantomjs"
 
 # URL para uma página:
@@ -30,7 +30,7 @@ def get_dates(leg, sess):
     except splinter.request_handler.status_code.HttpResponseError:
         return entries
 
-    soup = BeautifulSoup(browser.html)
+    soup = BeautifulSoup(browser.html, 'html.parser')
     rows = soup.find('div', id="painelNumeros").find_all('tr')
     for row in rows:
         cols = row.find_all('td')
