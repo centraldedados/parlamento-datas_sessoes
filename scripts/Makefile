@@ -4,3 +4,8 @@ scrape:
 install:
 	virtualenv .env --no-site-packages --distribute --prompt=\(scraper\)
 	. `pwd`/.env/bin/activate; pip install -r requirements.txt
+
+deploy:
+	git add ../data/datas-debates-novo.csv
+	git commit -m "Atualização automática"
+	git push origin master
